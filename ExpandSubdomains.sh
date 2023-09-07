@@ -6,10 +6,10 @@
 ./ExpandSubdomains.sh domain.com
 
 #firs step you need get you subdomains by tool prefered (assetfinder, subfinder, findomain...)
-subfinder -d $1 -silent -o subdomains.txt -silent
-#or
+subfinder -d $1 -silent -o subdomains.txt
+#
 assetfinder -subs-only $1 | anew subdomains.txt
-#or
+#
 findomain -t $1 | anew subdomains.txt
 
 #after yout need send to nuclei use ssl names template
