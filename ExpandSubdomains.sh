@@ -5,7 +5,7 @@
 #how to use:
 ./ExpandSubdomains.sh domain.com
 
-#firs step you need get you subdomains by tool prefered (assetfinder, subfinder, findomain...)
+#first step you need get you subdomains by tool prefered (assetfinder, subfinder, findomain...)
 subfinder -d $1 -silent -o subdomains.txt
 #
 assetfinder -subs-only $1 | anew subdomains.txt
