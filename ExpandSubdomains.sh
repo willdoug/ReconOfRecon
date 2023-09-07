@@ -2,13 +2,15 @@
 # This is very simple script to expand area of atack while yout recon fase of subdomains.
 # Where you dont have buy apis to increase you results, you can try force get more subdomains by certificates associates to main domain.
 # Let me to show how i do this:
+#how to use:
+./ExpandSubdomains.sh domain.com
 
 #firs step you need get you subdomains by tool prefered (assetfinder, subfinder, findomain...)
-subfinder -d domain.com -o subdomains.txt -silent
+subfinder -d $1 -silent -o subdomains.txt -silent
 #or
-assetfinder -subs-only domain.com | anew subdomains.txt
+assetfinder -subs-only $1 | anew subdomains.txt
 #or
-findomain -t domain.com | anew subdomains.txt
+findomain -t $1 | anew subdomains.txt
 
 #after yout need send to nuclei use ssl names template
 nuclei -l subdomains.txt -t ssl/ssl-dns-names.yaml -o subdomains_ssl.txt 
