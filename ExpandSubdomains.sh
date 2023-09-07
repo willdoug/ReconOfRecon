@@ -30,4 +30,4 @@ echo "Total subdomains founds:"
 cat subdomains_ssl_cleaned_httpx200.txt | wc -l
 
 #no more...
-#keep hacking, OPenTester
+#keep hacking, @OPenTester
