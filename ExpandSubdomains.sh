@@ -4,6 +4,12 @@
 # Let me to show how i do this:
 
 #firs step you need get you subdomains by tool prefered (assetfinder, subfinder, findomain...)
+subfinder -d domain.com -o subdomains.txt -silent
+#or
+assetfinder -subs-only domain.com | anew subdomains.txt
+#or
+findomain -t domain.com | anew subdomains.txt
+
 #after yout need send to nuclei use ssl names template
 nuclei -l subdomains.txt -t ssl/ssl-dns-names.yaml -o subdomains_ssl.txt 
 
