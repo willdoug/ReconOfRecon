@@ -10,7 +10,7 @@ subfinder -d $1 -silent -o $1.subdomains.txt
 #
 assetfinder -subs-only $1 | anew $1.subdomains.txt
 #
-findomain -t $1 | anew $1.subdomains.txt
+findomain -t $1 | egrep -v "A error|Searching|Target|Job finished|Good luck" | anew $1.subdomains.txt
 
 #after yout need send to nuclei use ssl names template
 nuclei -l $1.subdomains.txt -t ssl/ssl-dns-names.yaml -o $1.subdomains_ssl.txt 
