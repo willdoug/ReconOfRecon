@@ -1,7 +1,10 @@
 #!/bin/bash
-# This is very simple script to expand area of atack while yout recon fase of subdomains.
+# This is very simple script to "EXPAND AREA OF ATACK" while yout recon fase of subdomains.
 # Where you dont have buy apis to increase you results, you can try force get more subdomains by certificates associates to main domain.
 # Let me to show how i do this:
+
+#TOOLS: assetfinder, subfinder, findomain, anew, nuclei, httpx
+
 #how to use:
 #./ExpandSubdomains.sh domain.com
 
