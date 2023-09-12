@@ -35,7 +35,7 @@ cat $1_subdomains_ssl_cleaned.txt | cut -d "." -f2,3,4 | sort | uniq | grep "\."
 nuclei -l $1_subdomains_ssl_news_domains.txt -t ssl/ssl-dns-names.yaml -o $1_subdomains_2recon.txt
 rm $1_subdomains_ssl_news_domains.txt
 #
-cat $1_subdomains_ssl_cleaned.txt | anew $1_subdomains_2recon.txt
+cat $1_subdomains_ssl_news_domains.txt | anew $1_subdomains_2recon.txt
 #
 #this step i just make regular expression to clear results and save using anew
 cat $1_subdomains_2recon.txt | cut -d "[" -f5 | cut -d "]" -f1 | tr ',' '\n' | egrep -v "microsoft.com|cloudflare.com|big-ip.com|f5.com|teams.com|office365.com|microsoft365.com|microsoftonline-p.com|microsoftonline.com
