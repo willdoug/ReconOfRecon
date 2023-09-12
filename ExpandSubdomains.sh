@@ -55,7 +55,7 @@ rm $1.subdomains_ssl_cleaned_2recon_2cleaned.txt
 cat $1_subdomains.txt
 #here i just show quantity
 echo ""
-echo "Preview of subdomains founds before clean:"
+echo "Subtotal of subdomains founds before clean:"
 cat $1.subdomains_ssl_cleaned.txt | wc -l
 rm $1.subdomains_ssl_cleaned.txt
 echo ""
