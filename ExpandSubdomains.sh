@@ -62,7 +62,7 @@ echo ""
 echo "Result save into the file:"
 echo $1_subdomains.txt
 echo ""
-echo "keep hacking, by @OPenTester"
+echo -e "\e[32mkeep hacking, by @OPenTester\e[0m"
 
 #clear old files
 rm $1_subdomains_ssl.txt
