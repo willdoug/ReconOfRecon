@@ -26,7 +26,7 @@ cat $1_subdomains_ssl_new.txt | grep -v -E "microsoft.com|cloudflare.com|big-ip.
 
 ####
 ####
-#make again recon of recon 
+#make again RECON OF RECON
 cat $1_subdomains_ssl_cleaned.txt | cut -d "." -f2,3,4 | sort | uniq | grep "\." | anew $1_subdomains_ssl_news_domains.txt
 #
 nuclei -l $1_subdomains_ssl_news_domains.txt -t ssl/ssl-dns-names.yaml -o $1_subdomains_2recon.txt
