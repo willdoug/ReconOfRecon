@@ -69,6 +69,7 @@ rm $1_subdomains_ssl.txt
 rm $1_subdomains_ssl_new.txt
 rm $1_subdomains_ssl_cleaned.txt
 rm $1_subdomains_ssl_news_domains.txt
+rm $1_subdomains_2recon.txt
 rm $1_subdomains_ssl_cleaned_2recon_2cleaned.txt
  
 
