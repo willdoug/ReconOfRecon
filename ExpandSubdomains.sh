@@ -60,6 +60,7 @@ echo ""
 echo -e "\e[32mkeep hacking, by @OPenTester\e[0m"
 
 #clear old files
+rm $1_subdomains.txt
 rm $1_subdomains_ssl.txt
 rm $1_subdomains_ssl_new.txt
 rm $1_subdomains_ssl_new2.txt
