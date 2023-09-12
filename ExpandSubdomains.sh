@@ -31,6 +31,7 @@ rm $1_subdomains_ssl.txt
 
 #make again recon of recon
 cat $1_subdomains_ssl_cleaned.txt | cut -d "." -f2,3,4 | sort | uniq | grep "\." | anew $1_subdomains_ssl_news_domains.txt
+rm $1_subdomains_ssl_cleaned.txt
 #
 nuclei -l $1_subdomains_ssl_news_domains.txt -t ssl/ssl-dns-names.yaml -o $1_subdomains_2recon.txt
 #
