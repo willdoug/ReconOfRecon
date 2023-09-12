@@ -46,14 +46,14 @@ cat $1.subdomains_ssl_cleaned_2recon_2cleaned.txt | wc -l
 ####
 
 #Now i check who is online and active using tool httpx
-cat $1.subdomains_ssl_cleaned_2recon_2cleaned.txt | httpx -silent | anew $1.subdomains_ssl_cleaned_2recon_2cleaned_httpx200.txt 
+cat $1.subdomains_ssl_cleaned_2recon_2cleaned.txt | httpx -silent | anew $1_subdomains.txt 
 rm $1.subdomains_ssl_cleaned_2recon_2cleaned.txt
 
 #Here i show results and quantity
-cat $1.subdomains_ssl_cleaned_2recon_2cleaned_httpx200.txt
+cat $1_subdomains.txt
 echo ""
 echo "Total subdomains founds:"
-cat $1.subdomains_ssl_cleaned_2recon_2cleaned_httpx200.txt | wc -l
+cat $1_subdomains.txt | wc -l
 echo ""
 echo "Result save into the file:"
 echo $1_subdomains.txt
