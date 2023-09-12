@@ -3,7 +3,7 @@
 # Where you dont have buy apis to increase you results, you can try force get more subdomains by certificates associates to main domain.
 # Let me to show how i do this:
 #how to use:
-./ExpandSubdomains.sh domain.com
+#./ExpandSubdomains.sh domain.com
 
 #first step you need get you subdomains by tool prefered (assetfinder, subfinder, findomain...)
 subfinder -d $1 -silent -o $1.subdomains.txt
