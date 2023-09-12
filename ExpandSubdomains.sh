@@ -54,9 +54,9 @@ cat $1_sub_domains.txt
 #here i just show quantity
 echo ""
 echo "Subtotal of subdomains founds before clean:"
-cat $1_subdomains_ssl_cleaned_2recon_2cleaned.txt | wc -l
+cat $1_subdomains_ssl_new.txt | wc -l
 echo ""
-echo "Total subdomains founds:"
+echo "Total subdomains founds after:"
 cat $1_sub_domains.txt | wc -l
 echo ""
 echo "Result save into the file:"
