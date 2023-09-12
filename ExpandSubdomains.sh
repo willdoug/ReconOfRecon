@@ -6,28 +6,46 @@
 ./ExpandSubdomains.sh domain.com
 
 #first step you need get you subdomains by tool prefered (assetfinder, subfinder, findomain...)
-subfinder -d $1 -silent -o subdomains.txt
+subfinder -d $1 -silent -o $1.subdomains.txt
 #
-assetfinder -subs-only $1 | anew subdomains.txt
+assetfinder -subs-only $1 | anew $1.subdomains.txt
 #
-findomain -t $1 | anew subdomains.txt
+findomain -t $1 | anew $1.subdomains.txt
 
 #after yout need send to nuclei use ssl names template
-nuclei -l subdomains.txt -t ssl/ssl-dns-names.yaml -o subdomains_ssl.txt 
+nuclei -l $1.subdomains.txt -t ssl/ssl-dns-names.yaml -o $1.subdomains_ssl.txt 
+rm $1.subdomains.txt
 
 #this step i just make regular expression to clear results and save using anew
-cat subdomains_ssl.txt | cut -d "[" -f5 | cut -d "]" -f1 | tr ',' '\n' | anew subdomains_ssl_cleaned.txt
+cat $1.subdomains_ssl.txt | cut -d "[" -f5 | cut -d "]" -f1 | tr ',' '\n' | egrep -v "microsoft.com" | anew $1.subdomains_ssl_cleaned.txt
+rm $1.subdomains_ssl.txt
 
 #here i just show quantity
-cat subdomains_ssl_cleaned.txt | wc -l
+cat $1.subdomains_ssl_cleaned.txt | wc -l
+
+####
+####
+
+#make again recon of recon
+nuclei -l $1.subdomains_ssl_cleaned.txt -t ssl/ssl-dns-names.yaml -o $1.subdomains_ssl_cleaned_2recon.txt
+rm $1.subdomains_ssl_cleaned.txt
+#this step i just make regular expression to clear results and save using anew
+cat $1.subdomains_ssl_cleaned_2recon.txt | cut -d "[" -f5 | cut -d "]" -f1 | tr ',' '\n' | egrep -v "microsoft.com" | anew $1.subdomains_ssl_cleaned_2recon_2cleaned.txt
+rm $1.subdomains_ssl_cleaned_2recon.txt
+#here i just show quantity
+cat $1.subdomains_ssl_cleaned_2recon_2cleaned.txt | wc -l
+
+####
+####
 
 #Now i check who is online and active using tool httpx
-cat subdomains_ssl_cleaned.txt | httpx -silent | anew subdomains_ssl_cleaned_httpx200.txt 
+cat $1.subdomains_ssl_cleaned_2recon_2cleaned.txt | httpx -silent | anew $1.subdomains_ssl_cleaned_2recon_2cleaned_httpx200.txt 
+rm $1.subdomains_ssl_cleaned_2recon_2cleaned.txt
 
 #Here i show results and quantity
-cat subdomains_ssl_cleaned_httpx200.txt
+cat $1.subdomains_ssl_cleaned_2recon_2cleaned_httpx200.txt
 echo "Total subdomains founds:"
-cat subdomains_ssl_cleaned_httpx200.txt | wc -l
+cat $1.subdomains_ssl_cleaned_2recon_2cleaned_httpx200.txt | wc -l
 
 #no more...
 #keep hacking, @OPenTester
