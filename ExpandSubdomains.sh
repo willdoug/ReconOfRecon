@@ -20,7 +20,7 @@ nuclei -l $1.subdomains.txt -t ssl/ssl-dns-names.yaml -o $1.subdomains_ssl.txt
 rm $1.subdomains.txt
 
 #this step i just make regular expression to clear results and save using anew
-cat $1.subdomains_ssl.txt | cut -d "[" -f5 | cut -d "]" -f1 | tr ',' '\n' | egrep -v "microsoft.com|cloudflare.com" | anew $1.subdomains_ssl_cleaned.txt
+cat $1.subdomains_ssl.txt | cut -d "[" -f5 | cut -d "]" -f1 | tr ',' '\n' | egrep -v "microsoft.com|cloudflare.com|big-ip.com|f5.com" | anew $1.subdomains_ssl_cleaned.txt
 rm $1.subdomains_ssl.txt
 
 #here i just show quantity
@@ -39,7 +39,7 @@ cat $1.subdomains_ssl_cleaned.txt | anew $1.subdomains_2recon.txt
 rm $1.subdomains_ssl_cleaned.txt
 #
 #this step i just make regular expression to clear results and save using anew
-cat $1.subdomains_2recon.txt | cut -d "[" -f5 | cut -d "]" -f1 | tr ',' '\n' | egrep -v "microsoft.com|cloudflare.com" | anew $1.subdomains_ssl_cleaned_2recon_2cleaned.txt
+cat $1.subdomains_2recon.txt | cut -d "[" -f5 | cut -d "]" -f1 | tr ',' '\n' | egrep -v "microsoft.com|cloudflare.com|big-ip.com|f5.com" | anew $1.subdomains_ssl_cleaned_2recon_2cleaned.txt
 rm $1.subdomains_2recon.txt
 #here i just show quantity
 cat $1.subdomains_ssl_cleaned_2recon_2cleaned.txt | wc -l
