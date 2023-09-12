@@ -27,11 +27,17 @@ cat $1.subdomains_ssl_cleaned.txt | wc -l
 ####
 
 #make again recon of recon
-nuclei -l $1.subdomains_ssl_cleaned.txt -t ssl/ssl-dns-names.yaml -o $1.subdomains_ssl_cleaned_2recon.txt
+cat $1.subdomains_ssl_cleaned.txt | cut -d "." -f2,3,4 | sort | uniq | grep "\." | anew $1.subdomains_ssl_news_domains.txt
+#
+nuclei -l $1.subdomains_ssl_news_domains.txt -t ssl/ssl-dns-names.yaml -o $1.subdomains_2recon.txt
+rm $1.subdomains_ssl_news_domains.txt
+#
+cat $1.subdomains_ssl_cleaned.txt | anew $1.subdomains_2recon.txt
 rm $1.subdomains_ssl_cleaned.txt
+#
 #this step i just make regular expression to clear results and save using anew
-cat $1.subdomains_ssl_cleaned_2recon.txt | cut -d "[" -f5 | cut -d "]" -f1 | tr ',' '\n' | egrep -v "microsoft.com" | anew $1.subdomains_ssl_cleaned_2recon_2cleaned.txt
-rm $1.subdomains_ssl_cleaned_2recon.txt
+cat $1.subdomains_2recon.txt | cut -d "[" -f5 | cut -d "]" -f1 | tr ',' '\n' | egrep -v "microsoft.com" | anew $1.subdomains_ssl_cleaned_2recon_2cleaned.txt
+rm $1.subdomains_2recon.txt
 #here i just show quantity
 cat $1.subdomains_ssl_cleaned_2recon_2cleaned.txt | wc -l
 
