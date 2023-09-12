@@ -47,20 +47,20 @@ cat $1_subdomains_ssl_cleaned_2recon_2cleaned.txt | wc -l
 ####
 
 #Now i check who is online and active using tool httpx
-cat $1_subdomains_ssl_cleaned_2recon_2cleaned.txt | httpx -silent | anew $1_subdomains.txt 
+cat $1_subdomains_ssl_cleaned_2recon_2cleaned.txt | httpx -silent | anew $1_sub_domains.txt 
 
 #Here i show results and quantity
-cat $1_subdomains.txt
+cat $1_sub_domains.txt
 #here i just show quantity
 echo ""
 echo "Subtotal of subdomains founds before clean:"
-cat $1_subdomains_ssl_cleaned.txt | wc -l
+cat $1_subdomains_ssl_cleaned_2recon_2cleaned.txt | wc -l
 echo ""
 echo "Total subdomains founds:"
-cat $1_subdomains.txt | wc -l
+cat $1_sub_domains.txt | wc -l
 echo ""
 echo "Result save into the file:"
-echo $1_subdomains.txt
+echo $1_sub_domains.txt
 echo ""
 echo -e "\e[32mkeep hacking, by @OPenTester\e[0m"
 
