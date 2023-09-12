@@ -51,7 +51,7 @@ rm $1.subdomains_ssl_cleaned_2recon_2cleaned.txt
 
 #Here i show results and quantity
 cat $1.subdomains_ssl_cleaned_2recon_2cleaned_httpx200.txt
-ehco ""
+echo ""
 echo "Total subdomains founds:"
 cat $1.subdomains_ssl_cleaned_2recon_2cleaned_httpx200.txt | wc -l
 echo ""
