@@ -66,6 +66,8 @@ cat $1_subdomains.txt | wc -l
 echo ""
 echo "Result save into the file:"
 echo $1_subdomains.txt
+echo ""
+echo "keep hacking, by @OPenTester"
 
 #no more...
-#keep hacking, @OPenTester
+#keep hacking, by @OPenTester
