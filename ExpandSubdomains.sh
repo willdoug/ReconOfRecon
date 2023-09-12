@@ -24,8 +24,6 @@ cat $1.subdomains_ssl.txt | cut -d "[" -f5 | cut -d "]" -f1 | tr ',' '\n' | egre
 #TODO: list of waf's to remove from results
 rm $1.subdomains_ssl.txt
 
-#here i just show quantity
-cat $1.subdomains_ssl_cleaned.txt | wc -l
 
 ####
 ####
@@ -37,7 +35,6 @@ nuclei -l $1.subdomains_ssl_news_domains.txt -t ssl/ssl-dns-names.yaml -o $1.sub
 rm $1.subdomains_ssl_news_domains.txt
 #
 cat $1.subdomains_ssl_cleaned.txt | anew $1.subdomains_2recon.txt
-rm $1.subdomains_ssl_cleaned.txt
 #
 #this step i just make regular expression to clear results and save using anew
 cat $1.subdomains_2recon.txt | cut -d "[" -f5 | cut -d "]" -f1 | tr ',' '\n' | egrep -v "microsoft.com|cloudflare.com|big-ip.com|f5.com" | anew $1.subdomains_ssl_cleaned_2recon_2cleaned.txt
@@ -56,6 +53,11 @@ rm $1.subdomains_ssl_cleaned_2recon_2cleaned.txt
 
 #Here i show results and quantity
 cat $1_subdomains.txt
+#here i just show quantity
+echo ""
+echo "Preview of subdomains founds before clean:"
+cat $1.subdomains_ssl_cleaned.txt | wc -l
+rm $1.subdomains_ssl_cleaned.txt
 echo ""
 echo "Total subdomains founds:"
 cat $1_subdomains.txt | wc -l
