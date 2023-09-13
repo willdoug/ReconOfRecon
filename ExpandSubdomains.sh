@@ -8,14 +8,14 @@
 #how to use:
 #./ExpandSubdomains.sh domain.com
 
-#first step you need get you subdomains by tool prefered (assetfinder, subfinder, findomain...)
+#first step you need get you subdomains by you prefered tool (assetfinder, subfinder, findomain...)
 subfinder -d $1 -silent -o $1_subdomains.txt
 #
 assetfinder -subs-only $1 | anew $1_subdomains.txt
 #
 findomain -t $1 | egrep -v "A error|Searching|Target|Job finished|Good luck" | anew $1_subdomains.txt
 
-#after yout need send to nuclei use ssl names template
+#after you need send to nuclei use ssl names template
 nuclei -l $1_subdomains.txt -t ssl/ssl-dns-names.yaml -o $1_subdomains_ssl.txt 
 #this step i just make regular expression to clear results and save using anew
 cat $1_subdomains_ssl.txt | cut -d "[" -f5 | cut -d "]" -f1 | tr ',' '\n' | anew $1_subdomains_ssl_new.txt 
@@ -47,6 +47,10 @@ cat $1_subdomains_ssl_cleaned_2recon_2cleaned.txt | httpx -silent | anew $1_sub_
 
 #Here i show results and quantity
 cat $1_sub_domains.txt
+
+echo ""
+echo "Total initial of subdomains founds before second recon:"
+cat $1_subdomains.txt | wc -l
 echo ""
 echo "Subtotal of subdomains founds before clean:"
 cat $1_subdomains_ssl_new.txt | wc -l
@@ -60,14 +64,7 @@ echo ""
 echo -e "\e[32mkeep hacking, by @OPenTester\e[0m"
 
 #clear old files
-rm $1_subdomains.txt
-rm $1_subdomains_ssl.txt
-rm $1_subdomains_ssl_new.txt
-rm $1_subdomains_ssl_new2.txt
-rm $1_subdomains_ssl_cleaned.txt
-rm $1_subdomains_ssl_news_domains.txt
-rm $1_subdomains_2recon.txt
-rm $1_subdomains_ssl_cleaned_2recon_2cleaned.txt
+rm $1_subdomains*
  
 
 
