@@ -52,16 +52,16 @@ echo ""
 echo "Total initial of subdomains founds before second recon:"
 cat $1_subdomains.txt | wc -l
 echo ""
-echo "Subtotal of subdomains founds before clean:"
+echo "Subtotal of subdomains founds after second recon, but, before of clean:"
 cat $1_subdomains_ssl_new.txt | wc -l
 echo ""
-echo "Total subdomains founds after:"
+echo "Total subdomains founds after second recon:"
 cat $1_sub_domains.txt | wc -l
 echo ""
 echo "Result save into the file:"
 echo $1_sub_domains.txt
 echo ""
-echo -e "\e[32mkeep hacking, by @OPenTester\e[0m"
+echo -e "\e[32mkeep hacking, Artefact of software from course RECON OF RECON by @OPenTester\e[0m"
 
 #clear old files
 rm $1_subdomains*
