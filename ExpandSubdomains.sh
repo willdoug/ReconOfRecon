@@ -55,7 +55,7 @@ echo "STARTED EXPRESSION REGULAR TO ESTRUCTURE AND CLEAN:"
 cat $1_subdomains_2recon.txt | cut -d "[" -f5 | cut -d "]" -f1 | tr ',' '\n' | anew $1_subdomains_ssl_new2.txt 
 echo ""
 #put first results of first recon into file of second recon
-echo "PUT FIRST RESULT OF SUBDOMAINS IN TO FILE FROM SECOND RESULTS RECON: " 
+echo "PUT FIRST RESULTS OF SUBDOMAINS IN TO FILE FROM SECOND RESULTS RECON: " 
 cat $1_subdomains.txt $1_subdomains_ssl_cleaned.txt | anew $1_subdomains_ssl_new2.txt
 #
 echo "STARTED EXPRESSION REGULAR TO REMOVE THE 3RD SUBDOMAINS:"
@@ -91,7 +91,7 @@ echo ""
 echo -e "\e[32mkeep hacking, Artefact of software from course RECON OF RECON by @OPenTester\e[0m"
 
 #clear old files
-rm $1_subdomains*
+#rm $1_subdomains*
  
 
 
