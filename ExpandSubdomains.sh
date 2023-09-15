@@ -51,7 +51,7 @@ cat $1_subdomains_2recon.txt | cut -d "[" -f5 | cut -d "]" -f1 | tr ',' '\n' | a
 
 #put first results of first recon into file of second recon
 echo "PUT FIRST RESULT OF SUBDOMAINS IN TO FILE FROM SECOND RESULTS RECON: " 
-cat $1_subdomains_ssl_news_domains.txt | anew $1_subdomains_ssl_new2.txt
+cat $1_subdomains.txt $1_subdomains_ssl_cleaned.txt | anew $1_subdomains_ssl_new2.txt
 #
 echo "STARTED EXPRESSION REGULAR TO REMOVE THE 3RD SUBDOMAINS:"
 cat $1_subdomains_ssl_new2.txt | grep -v -E "\*\|microsoft.com|cloudflare.com|big-ip.com|f5.com|teams.com|office365.com|microsoft365.com|microsoftonline-p.com|microsoftonline.com|live.com|live.net|office.net|trafficmanager.net|officeppe.net|cloudflare-dns.com|hotmail.com|office.com|microsoft|meet.lync.com|o365.com|outlook.com|officeppe.net|cloudfront|cloudflaressl.com|tls.automattic.com|wordpress.com" | anew $1_subdomains_ssl_cleaned_2recon_2cleaned.txt
