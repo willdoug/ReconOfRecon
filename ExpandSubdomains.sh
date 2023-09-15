@@ -19,7 +19,7 @@ findomain -t $1 | egrep -v "A error|Searching|Target|Job finished|Good luck" | a
 nuclei -l $1_subdomains.txt -t ssl/ssl-dns-names.yaml -o $1_subdomains_ssl.txt 
 #this step i just make regular expression to clear results and save using anew
 cat $1_subdomains_ssl.txt | cut -d "[" -f5 | cut -d "]" -f1 | tr ',' '\n' | anew $1_subdomains_ssl_new.txt 
-cat $1_subdomains_ssl_new.txt | grep -v -E "microsoft.com|cloudflare.com|big-ip.com|f5.com|teams.com|office365.com|microsoft365.com|microsoftonline-p.com|microsoftonline.com|live.com|live.net|office.net|trafficmanager.net|officeppe.net|cloudflare-dns.com|hotmail.com|office.com|microsoft|meet.lync.com|o365.com|outlook.com|officeppe.net|cloudfront|cloudflaressl.com|tls.automattic.com|wordpress.com" | anew $1_subdomains_ssl_cleaned.txt
+cat $1_subdomains_ssl_new.txt | grep -v -E "*|microsoft.com|cloudflare.com|big-ip.com|f5.com|teams.com|office365.com|microsoft365.com|microsoftonline-p.com|microsoftonline.com|live.com|live.net|office.net|trafficmanager.net|officeppe.net|cloudflare-dns.com|hotmail.com|office.com|microsoft|meet.lync.com|o365.com|outlook.com|officeppe.net|cloudfront|cloudflaressl.com|tls.automattic.com|wordpress.com" | anew $1_subdomains_ssl_cleaned.txt
 #TODO: list of waf's to remove from results
 
 
@@ -35,7 +35,7 @@ cat $1_subdomains_ssl_news_domains.txt | anew $1_subdomains_2recon.txt
 #
 #this step i just make regular expression to clear results and save using anew
 cat $1_subdomains_2recon.txt | cut -d "[" -f5 | cut -d "]" -f1 | tr ',' '\n' | anew $1_subdomains_ssl_new2.txt 
-cat $1_subdomains_ssl_new2.txt | grep -v -E "microsoft.com|cloudflare.com|big-ip.com|f5.com|teams.com|office365.com|microsoft365.com|microsoftonline-p.com|microsoftonline.com|live.com|live.net|office.net|trafficmanager.net|officeppe.net|cloudflare-dns.com|hotmail.com|office.com|microsoft|meet.lync.com|o365.com|outlook.com|officeppe.net|cloudfront|cloudflaressl.com|tls.automattic.com|wordpress.com" | anew $1_subdomains_ssl_cleaned_2recon_2cleaned.txt
+cat $1_subdomains_ssl_new2.txt | grep -v -E "*|microsoft.com|cloudflare.com|big-ip.com|f5.com|teams.com|office365.com|microsoft365.com|microsoftonline-p.com|microsoftonline.com|live.com|live.net|office.net|trafficmanager.net|officeppe.net|cloudflare-dns.com|hotmail.com|office.com|microsoft|meet.lync.com|o365.com|outlook.com|officeppe.net|cloudfront|cloudflaressl.com|tls.automattic.com|wordpress.com" | anew $1_subdomains_ssl_cleaned_2recon_2cleaned.txt
 #TODO: list of waf's to remove from results
 ####
 ####
