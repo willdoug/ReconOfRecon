@@ -3,17 +3,19 @@
 # Where you dont have buy apis to increase you results, you can try force get more subdomains by certificates associates to main domain.
 # Let me to show how i do this:
 
-#TOOLS: assetfinder, subfinder, findomain, anew, nuclei, httpx
+#TOOLS: assetfinder, subfinder, findomain, amass, anew, nuclei, httpx
 
 #how to use:
 #./ExpandSubdomains.sh domain.com
 
-#first step you need get you subdomains by you prefered tool (assetfinder, subfinder, findomain...)
+#first step you need get you subdomains by you prefered tool (assetfinder, subfinder, findomain, amass...)
 subfinder -d $1 -silent -o $1_subdomains.txt
 #
 assetfinder -subs-only $1 | anew $1_subdomains.txt
 #
 findomain -t $1 | egrep -v "A error|Searching|Target|Job finished|Good luck" | anew $1_subdomains.txt
+#
+amass enum -d $1 -brute -o | anew $1_subdomains.txt
 
 #after you need send to nuclei use ssl names template
 echo "START FIND SSL NAMES ON CERTIFICATES FROM SUBDOMAINS:"
