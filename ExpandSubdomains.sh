@@ -15,8 +15,9 @@ assetfinder -subs-only $1 | anew $1_subdomains.txt
 #
 findomain -t $1 | egrep -v "A error|Searching|Target|Job finished|Good luck" | anew $1_subdomains.txt
 #
-amass enum -d $1 -brute -o | anew $1_subdomains.txt
-
+amass enum -d $1 -brute -o $1_amass.txt
+cat $1_amass.txt | anew $1_subdomains.txt
+#
 #after you need send to nuclei use ssl names template
 echo "START FIND SSL NAMES ON CERTIFICATES FROM SUBDOMAINS:"
 nuclei -l $1_subdomains.txt -t ssl/ssl-dns-names.yaml -o $1_subdomains_ssl.txt 
