@@ -11,9 +11,9 @@
 #first step you need get you subdomains by you prefered tool (assetfinder, subfinder, findomain...)
 subfinder -d $1 -silent -o $1_subdomains.txt
 #
-assetfinder -subs-only $1 | anew $1_subdomains.txt
+assetfinder -subs-only $1 >> $1_subdomains.txt
 #
-findomain -t $1 | egrep -v "A error|Searching|Target|Job finished|Good luck" | anew $1_subdomains.txt
+findomain -t $1 | egrep -v "A error|Searching|Target|Job finished|Good luck" >> $1_subdomains.txt
 #
 #after you need send to nuclei use ssl names template
 echo "START FIND SSL NAMES ON CERTIFICATES FROM SUBDOMAINS:"
